@@ -143,17 +143,28 @@ public class AnimalController {
 
     /**
      * Delete an Animal by Id.
-     * Endpoint: POST http://localhost:8080/animals/delete/2
+     * Endpoint: GET http://localhost:8080/animals/delete/{animalId}
      *
      * @param animalId the unique Animal Id
      * @return redirect to the animal list
      */
-    @PostMapping("/delete/{animalId}")
+    @GetMapping("/delete/{animalId}")
     public String deleteAnimalById(@PathVariable int animalId) {
+        System.out.println("Web Delete Triggered for ID: " + animalId);
         Animal animal = service.getAnimalById(animalId);
         if (animal != null) {
             service.deleteAnimalById(animalId);
         }
         return "redirect:/animals/all";
     }
+
+    @GetMapping("/search")
+    public String searchByName(@RequestParam("name") String name, Model model) {
+        List<Animal> animals = service.getAnimalsByName(name);
+        model.addAttribute("animals", animals);
+        return "animal-list";  // reuse the existing list page
+    }
+
+
+
 }
