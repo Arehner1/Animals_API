@@ -19,4 +19,6 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer> {
     // Custom query to find animals by description length (just an example of how you can use native SQL)
     @Query(value = "SELECT * FROM animal a WHERE LENGTH(a.description) >= ?1", nativeQuery = true)
     List<Animal> getAnimalsByDescriptionLength(int length);
+
+
 }

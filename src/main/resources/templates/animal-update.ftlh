@@ -9,9 +9,9 @@
 <body>
     <div class="container mt-5">
         <h1>Update Animal</h1>
-        
-        <form action="/animals/update/${animal.animalId}" method="post">
-            <input type="hidden" name="animalId" value="${animal.animalId}">
+
+        <form action="/animals/update/${animal.animalId?c}" method="post">
+            <input type="hidden" name="animalId" value="${animal.animalId?c}">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" name="name" value="${animal.name}" required>
@@ -28,4 +28,4 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>
